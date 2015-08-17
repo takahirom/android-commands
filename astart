@@ -1,0 +1,1 @@
+adb shell pm list package|sed -e 's/^package://g'|peco|xargs -I^ adb shell monkey -p ^ -c android.intent.category.LAUNCHER 1

@@ -1,0 +1,5 @@
+#!/bin/sh
+adb shell screencap -p /sdcard/screenshot.png
+adb pull /sdcard/screenshot.png ./screenshot_`date "+%Y%m%d_%H%M%S"`.png
+adb shell rm /sdcard/screenshot.png
+open .

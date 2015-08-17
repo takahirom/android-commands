@@ -1,0 +1,8 @@
+target=`adb shell pm list package|sed -e 's/^package://g'|peco`
+adb shell << EOS
+run-as $target
+cd shared_prefs
+grep -n "" *
+exit
+exit
+EOS
