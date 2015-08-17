@@ -1,0 +1,4 @@
+#!/bin/sh
+adb shell screenrecord --verbose /sdcard/videoName.mp4   /* ctrl+c to stop recording */
+adb pull /sdcard/videoName.mp4
+adb shell exit
