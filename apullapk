@@ -1,1 +1,4 @@
-adb pull `adb shell pm list packages -f | sed -e 's/package:\([^=]*\).*/\1/g'|peco`
+#!/bin/sh
+device=`adb devices|grep -v "List of devices"|awk 'NF==2{print $1}'|awk 'BEGIN{all=""} {all =$0"\n"all} END{if(NR==1) {print($0)} else{system("echo \""all "\"|peco") } }'`
+echo "use" $device
+adb -s $device pull `adb shell pm list packages -f | sed -e 's/package:\([^=]*\).*/\1/g'|peco`

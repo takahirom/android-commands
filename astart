@@ -1,1 +1,3 @@
-adb shell pm list package|sed -e 's/^package://g'|peco|xargs -I^ adb shell monkey -p ^ -c android.intent.category.LAUNCHER 1
+device=`adb devices|grep -v "List of devices"|awk 'NF==2{print $1}'|awk 'BEGIN{all=""} {all =$0"\n"all} END{if(NR==1) {print($0)} else{system("echo \""all "\"|peco") } }'`
+echo "use" $device
+adb -s $device shell pm list package|sed -e 's/^package://g'|peco|xargs -I^ adb shell monkey -p ^ -c android.intent.category.LAUNCHER 1

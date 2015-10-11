@@ -1,5 +1,7 @@
 #!/bin/sh
-adb shell screencap -p /sdcard/screenshot.png
-adb pull /sdcard/screenshot.png ./screenshot_`date "+%Y%m%d_%H%M%S"`.png
-adb shell rm /sdcard/screenshot.png
+device=`adb devices|grep -v "List of devices"|awk 'NF==2{print $1}'|awk 'BEGIN{all=""} {all =$0"\n"all} END{if(NR==1) {print($0)} else{system("echo \""all "\"|peco") } }'`
+echo "use" $device
+adb -s $device shell screencap -p /sdcard/screenshot.png
+adb -s $device pull /sdcard/screenshot.png ./screenshot_`date "+%Y%m%d_%H%M%S"`.png
+adb -s $device shell rm /sdcard/screenshot.png
 open .
