@@ -1,1 +1,4 @@
-adb shell dumpsys activity top
+#!/bin/sh
+device=`aselectdevice`
+echo "use" $device
+adb -s $device shell dumpsys activity top
