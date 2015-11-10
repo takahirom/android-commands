@@ -1,6 +1,10 @@
 #!/bin/sh
 device=`aselectdevice`
 echo "use" $device
-adb -s $device shell screenrecord --verbose /sdcard/videoName.mp4 
-adb -s $device pull /sdcard/videoName.mp4
-adb -s $device shell exit
+now=`date "+%Y%m%d-%H-%M-%S"`
+adb -s $device shell << EOS
+screenrecord --verbose /sdcard/$now.mp4 
+exit
+EOS
+
+adb -s $device pull /sdcard/$now.mp4
