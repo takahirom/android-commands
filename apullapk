@@ -1,4 +1,4 @@
 #!/bin/sh
 device=`aselectdevice`
 echo "use" $device
-adb pull `adb shell pm list packages -f | sed -e 's/package:\([^=]*\).*/\1/g'|peco`
+adb -s $device pull `adb -s $device shell pm list packages -f | sed -e 's/package:\([^=]*\).*/\1/g'|peco`

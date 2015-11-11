@@ -1,4 +1,4 @@
 #!/bin/sh
 device=`aselectdevice`
 echo "use" $device
-adb -s $device shell pm list package|sed -e 's/^package://g'|peco|xargs adb uninstall
+adb -s $device shell pm list package|sed -e 's/^package://g'|peco|xargs adb -s $device uninstall

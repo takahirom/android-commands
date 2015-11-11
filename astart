@@ -1,4 +1,4 @@
 #!/bin/sh
 device=`aselectdevice`
 echo "use" $device
-adb -s $device shell pm list package|sed -e 's/^package://g'|peco|xargs -I^ adb shell monkey -p ^ -c android.intent.category.LAUNCHER 1
+adb -s $device shell pm list package|sed -e 's/^package://g'|peco|xargs -I^ adb -s $device shell monkey -p ^ -c android.intent.category.LAUNCHER 1
