@@ -1,5 +1,8 @@
 # android-commands
 
+Dependencies
+-------
+You have to install adb, peco.
 
 License
 -------
